@@ -51,6 +51,13 @@
   }
 }
 
+// ── Hide sidebar toggle on larger displays ──
+@media (min-width: 1100px) {
+  .d-header .panel .header-sidebar-toggle {
+    display: none;
+  }
+}
+
 // Fallback when no logo image is configured in site settings
 .d-header #site-text-logo {
   font-size: 0;
