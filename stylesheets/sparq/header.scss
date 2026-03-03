@@ -20,10 +20,19 @@
   width: auto;
 }
 
-// Logo link — flex alignment ("Forum" is now a link in .sparq-header-nav)
+// Logo link — flex row with "Forum" label after logo (mirrors help.sparqone.com "Help Center")
 .d-header .title a {
   display: flex;
   align-items: center;
+
+  &::after {
+    content: "Forum";
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary);
+    white-space: nowrap;
+  }
 }
 
 // ── Desktop: relocate sidebar toggle below header, aligned with sidebar column ──
