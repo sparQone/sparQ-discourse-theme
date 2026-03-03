@@ -1,71 +1,77 @@
-// sparq/header-nav.scss — Cross-site nav links in header
-// Mirrors: help.sparqone.com .navbar-nav
-//   Right-aligned links, pill CTA on last item, active indicator
+// sparq/header-nav.scss — Style the Custom Header Links component
+// Mirrors: marketplace.sparqone.com top nav
+//   Right-aligned text links, last link styled as blue outlined pill (current site)
+//
+// Install the component:
+//   https://meta.discourse.org/t/custom-header-links/90588
+//   Repo: https://github.com/discourse/discourse-custom-header-links
+//
+// Configure links in the component settings as comma-delimited values:
+//   "text, title, URL, view, target, hide-on-scroll"
+//   Put the current-site link (e.g. "Forum") last — it gets the pill style.
 
-// ── Nav container ──
-// Sits between .title and .panel in .d-header .contents (flex row)
-.sparq-header-nav {
+// ── Container ──
+// Injected into .d-header .contents between .title and .panel
+.custom-header-links {
   display: flex;
   align-items: center;
   margin-left: auto;
   margin-right: 0.5rem;
-}
 
-.sparq-header-nav-links {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.15rem;
+  }
 
-  li {
+  li.headerLink {
     margin: 0;
   }
-}
 
-// ── Individual nav link ──
-.sparq-nav-link {
-  display: block;
-  padding: 0.35rem 0.75rem;
-  color: var(--primary-high);
-  font-size: 0.9rem;
-  font-weight: 400;
-  text-decoration: none;
-  white-space: nowrap;
-  border-radius: var(--sparq-radius-md);
-  transition: background 0.15s ease, color 0.15s ease;
-
-  &:hover {
-    background: var(--primary-very-low);
-    color: var(--primary);
+  // ── Individual link ──
+  a {
+    display: block;
+    padding: 0.35rem 0.75rem;
+    color: var(--primary-high);
+    font-size: 0.9rem;
+    font-weight: 400;
     text-decoration: none;
+    white-space: nowrap;
+    border-radius: var(--sparq-radius-md);
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background: var(--primary-very-low);
+      color: var(--primary);
+      text-decoration: none;
+    }
+  }
+
+  // ── Pill link — last item = current site ──
+  // On marketplace: "Community" is the pill. On forum: "Forum" is the pill.
+  // Convention: put the current-site link last in your component settings.
+  li.headerLink:last-child a {
+    background: transparent;
+    color: #2563eb;
+    border: 1.5px solid #2563eb;
+    border-radius: 999px;
+    padding: 0.25rem 0.85rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+
+    &:hover {
+      background: #dbeafe;
+      color: #2563eb;
+    }
   }
 }
 
-// Active state — "Forum" is always active on the Discourse site
-.sparq-nav-link--active {
-  font-weight: 500;
-  color: var(--primary);
-}
-
-// ── Pill CTA link ──
-// Matches help.sparqone.com .nav-pill and existing .sign-up-button
-.sparq-nav-pill {
-  background: #dbeafe !important;
-  color: #2563eb !important;
-  border-radius: 999px;
-  padding: 0.25rem 0.85rem !important;
-  font-size: 0.85rem;
-
-  &:hover {
-    background: #bfdbfe !important;
-    color: #2563eb !important;
-  }
-}
-
-// ── Mobile: hide cross-site nav ──
+// ── Mobile: hide custom header links ──
 @media (max-width: 768px) {
-  .sparq-header-nav {
+  .custom-header-links {
     display: none;
   }
 }

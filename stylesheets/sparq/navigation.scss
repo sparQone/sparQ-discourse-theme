@@ -22,6 +22,10 @@
   color: var(--secondary);
   border-radius: var(--sparq-radius-md);
 
+  .d-icon {
+    color: var(--secondary);
+  }
+
   &::after {
     display: none;
   }
