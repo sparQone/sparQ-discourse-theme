@@ -20,18 +20,34 @@
   width: auto;
 }
 
-// "Forum" label inline with logo (mirrors help.sparqone.com "Help Center")
+// Logo link — flex alignment ("Forum" is now a link in .sparq-header-nav)
 .d-header .title a {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+}
 
-  &::after {
-    content: "Forum";
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--primary-high);
-    white-space: nowrap;
+// ── Desktop: relocate sidebar toggle below header, aligned with sidebar column ──
+// Uses absolute positioning so the button stays below the fixed header
+// and remains accessible whether the sidebar is open or collapsed.
+@media (min-width: 769px) {
+  .d-header .contents {
+    position: relative;
+  }
+
+  .d-header .panel .header-sidebar-toggle {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+
+    .btn-sidebar-toggle {
+      padding: 0.35rem 0.5rem;
+      border-radius: var(--sparq-radius-md);
+
+      &:hover {
+        background: var(--primary-very-low);
+      }
+    }
   }
 }
 

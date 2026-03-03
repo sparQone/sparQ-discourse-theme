@@ -1,0 +1,71 @@
+// sparq/header-nav.scss — Cross-site nav links in header
+// Mirrors: help.sparqone.com .navbar-nav
+//   Right-aligned links, pill CTA on last item, active indicator
+
+// ── Nav container ──
+// Sits between .title and .panel in .d-header .contents (flex row)
+.sparq-header-nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.sparq-header-nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
+}
+
+// ── Individual nav link ──
+.sparq-nav-link {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  color: var(--primary-high);
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--sparq-radius-md);
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--primary-very-low);
+    color: var(--primary);
+    text-decoration: none;
+  }
+}
+
+// Active state — "Forum" is always active on the Discourse site
+.sparq-nav-link--active {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+// ── Pill CTA link ──
+// Matches help.sparqone.com .nav-pill and existing .sign-up-button
+.sparq-nav-pill {
+  background: #dbeafe !important;
+  color: #2563eb !important;
+  border-radius: 999px;
+  padding: 0.25rem 0.85rem !important;
+  font-size: 0.85rem;
+
+  &:hover {
+    background: #bfdbfe !important;
+    color: #2563eb !important;
+  }
+}
+
+// ── Mobile: hide cross-site nav ──
+@media (max-width: 768px) {
+  .sparq-header-nav {
+    display: none;
+  }
+}
