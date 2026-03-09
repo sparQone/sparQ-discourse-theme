@@ -1,9 +1,12 @@
 // sparq/layout.scss — Container max-width matching sparqone.com
 // www main.css: .container { max-width: 1100px }
 
+// Consistent horizontal padding so header and content edges align
 .wrap,
 #main-outlet-wrapper {
   max-width: 1100px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #main-outlet {
